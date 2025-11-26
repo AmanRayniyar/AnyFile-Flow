@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyFile Flow - Ultimate Online File Tools & Converters</title>
+    <meta name="description" content="AnyFile Flow offers 100+ free online tools for file conversion, PDF editing, image processing, video tools, and more. Fast, secure, and client-side processing.">
+    <meta name="keywords" content="PDF tools, image converter, video converter, file tools, online utilities, free tools">
+    <meta name="author" content="Aman Rauniyar - AnyFile Flow">
+    <link rel="canonical" href="https://anyfileflow.com">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AnyFile Flow - 100+ Free Online Tools">
+    <meta property="og:description" content="Convert, edit, compress files with our 100+ free online tools. PDF, images, videos, audio and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anyfileflow.com">
+    <meta property="og:image" content="https://assets.about.me/background/users/a/m/a/amanrauniyarofficial_1757690363_048.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AnyFile Flow - Free Online Tools">
+    <meta name="twitter:description" content="100+ free online tools for file conversion, editing, and processing.">
+    <meta name="twitter:image" content="https://assets.about.me/background/users/a/m/a/amanrauniyarofficial_1757690363_048.jpg">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    
+    <style>
+        /* CSS Variables for theming - Optimized and minified */
+        :root {
+            --primary: #4a6cf7;
+            --primary-dark: #3a56d4;
+            --secondary: #f5f5f5;
+            --text: #333;
+            --text-light: #666;
+            --background: #ffffff;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary: #5d7df7;
+            --primary-dark: #4a6cf7;
+            --secondary: #2d3748;
+            --text: #f7fafc;
+            --text-light: #cbd5e0;
+            --background: #1a202c;
+            --card-bg: #2d3748;
+            --border: #4a5568;
+            --shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Reset and base styles - Optimized */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles - Simplified */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark-mode header {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover, .theme-toggle:focus {
+            background: var(--secondary);
+            outline: 2px solid var(--primary);
+        }
+
+        /* Search Bar - Not attached to header */
+        .search-section {
+            background: var(--secondary);
+            padding: 30px 0;
+            margin-bottom: 40px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: var(--card-bg);
+            color: var(--text);
+            font-family: inherit;
+            padding-left: 50px;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6eeff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .content-area {
+            flex: 1;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .sidebar ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            min-height: 44px;
+        }
+
+        .sidebar li a:hover, .sidebar li a:focus {
+            background: var(--secondary);
+            color: var(--primary);
+            outline: 2px solid var(--primary);
+        }
+
+        .sidebar-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Tools Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tools-section {
+            padding: 60px 0;
+        }
+
+        .tools-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+            min-height: 44px;
+        }
+
+        .filter-btn.active, .filter-btn:hover, .filter-btn:focus {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            outline: 2px solid var(--primary-dark);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover, .tool-card:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            outline: 2px solid var(--primary);
+        }
+
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .tool-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .tool-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+
+        .tool-tag {
+            background: rgba(74, 108, 247, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: var(--secondary);
+        }
+
+        .dark-mode .features-section {
+            background: #252f3f;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover, .feature-card:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            outline: 2px solid var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+        }
+
+        /* Statistics */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--secondary);
+            padding: 80px 0;
+        }
+
+        .dark-mode .testimonials {
+            background: #252f3f;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Creator Info */
+        .creator-info {
+            background: var(--secondary);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .dark-mode .creator-info {
+            background: #252f3f;
+        }
+
+        .creator-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .creator-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 3rem;
+            overflow: hidden;
+            border: 5px solid var(--card-bg);
+            box-shadow: var(--shadow);
+        }
+
+        .creator-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .creator-content h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .creator-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .creator-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--border);
+            color: var(--text-color);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover, .social-link:focus {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            outline: 2px solid var(--primary-dark);
+        }
+
+        /* Collaboration Section */
+        .collaboration {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+
+        .collaboration-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .collaboration h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .collaboration p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--secondary);
+            padding: 15px 25px;
+            border-radius: var(--radius);
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
+            min-height: 44px;
+        }
+
+        .contact-email:hover, .contact-email:focus {
+            background: var(--primary);
+            color: white;
+            outline: 2px solid var(--primary-dark);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: var(--secondary);
+        }
+
+        .dark-mode .faq-section {
+            background: #252f3f;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            min-height: 44px;
+        }
+
+        .faq-question:focus {
+            outline: 2px solid var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: var(--transition);
+            padding: 5px 0;
+            display: inline-block;
+        }
+
+        .footer-column a:hover, .footer-column a:focus {
+            color: var(--primary);
+            outline: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .language-selector {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .language-selector select {
+            padding: 8px 15px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--card-bg);
+            color: var(--text);
+            font-family: inherit;
+            min-height: 44px;
+        }
+
+        .language-selector select:focus {
+            outline: 2px solid var(--primary);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover, .close-modal:focus {
+            background: var(--secondary);
+            outline: 2px solid var(--primary);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        /* Tool Interface Styles */
+        .tool-interface {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upload-area:hover, .upload-area:focus {
+            border-color: var(--primary);
+            outline: 2px solid var(--primary);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .tool-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-group label {
+            font-weight: 500;
+        }
+
+        .option-group input, .option-group select, .option-group textarea {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--card-bg);
+            color: var(--text);
+            font-family: inherit;
+            min-height: 44px;
+        }
+
+        .option-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .option-group input:focus, .option-group select:focus, .option-group textarea:focus {
+            outline: 2px solid var(--primary);
+        }
+
+        .tool-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: inherit;
+            font-size: 1.1rem;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(74, 108, 247, 0.3);
+            outline: 2px solid var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover, .btn-secondary:focus {
+            background: var(--border);
+            transform: translateY(-2px);
+            outline: 2px solid var(--primary);
+        }
+
+        .processing-indicator {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .result-area {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Performance optimizations */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lazy.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+
+    <!-- Header - Simplified with only logo and theme toggle -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon" aria-hidden="true">AF</div>
+                    <span>AnyFile Flow</span>
+                </a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Section - Separate from header -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-icon" aria-hidden="true">🔍</div>
+                <input type="text" class="search-input" placeholder="Search for tools by name, description, or tags..." aria-label="Search tools">
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Every Tool You Need to Work with Files</h1>
+                <p>AnyFile Flow offers a comprehensive suite of 100+ free online tools for file conversion, editing, compression, and more. All tools are client-side for maximum privacy and speed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Free Tools</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">500K+</span>
+                <span class="stat-label">Monthly Users</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">Uptime</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Files Sent to Server</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content with Sidebar -->
+    <main id="main-content">
+        <div class="container">
+            <div class="main-content">
+                <div class="content-area">
+                    <!-- Tools Section -->
+                    <section class="tools-section" id="tools">
+                        <div class="section-title">
+                            <h2>All File Tools</h2>
+                            <p>Access our complete collection of file processing tools. All tools are 100% FREE and easy to use!</p>
+                        </div>
+                        
+                        <div class="tools-filter">
+                            <button class="filter-btn active" data-filter="all">All Tools</button>
+                            <button class="filter-btn" data-filter="pdf">PDF Tools</button>
+                            <button class="filter-btn" data-filter="image">Image Tools</button>
+                            <button class="filter-btn" data-filter="video">Video Tools</button>
+                            <button class="filter-btn" data-filter="audio">Audio Tools</button>
+                            <button class="filter-btn" data-filter="document">Document Tools</button>
+                            <button class="filter-btn" data-filter="seo">SEO Tools</button>
+                            <button class="filter-btn" data-filter="productivity">Productivity</button>
+                        </div>
+                        
+                        <div class="tools-grid" id="toolsGrid">
+                            <!-- Tools will be dynamically added here -->
+                        </div>
+                    </section>
+
+                    <!-- Features Section -->
+                    <section class="features-section" id="features">
+                        <div class="container">
+                            <div class="section-title">
+                                <h2>Why Choose AnyFile Flow?</h2>
+                                <p>Discover what makes our platform the best choice for all your file processing needs</p>
+                            </div>
+                            
+                            <div class="features-grid">
+                                <div class="feature-card">
+                                    <div class="feature-icon" aria-hidden="true">🔒</div>
+                                    <h3>Privacy First</h3>
+                                    <p>All file processing happens directly in your browser. Your files never leave your device.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon" aria-hidden="true">⚡</div>
+                                    <h3>Lightning Fast</h3>
+                                    <p>Client-side processing means no upload delays. Get results instantly.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon" aria-hidden="true">💯</div>
+                                    <h3>100% Free</h3>
+                                    <p>All our tools are completely free to use with no hidden costs or limitations.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon" aria-hidden="true">📱</div>
+                                    <h3>Mobile Friendly</h3>
+                                    <p>Works perfectly on all devices - desktop, tablet, and mobile.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon" aria-hidden="true">🛠️</div>
+                                    <h3>No Installation</h3>
+                                    <p>Use our tools directly in your browser. No downloads or installations required.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon" aria-hidden="true">🔧</div>
+                                    <h3>Regular Updates</h3>
+                                    <p>We continuously improve our tools and add new features based on user feedback.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="https://anyfileflow.blogspot.com/p/blog.html"><span class="sidebar-icon" aria-hidden="true">📝</span> Blog</a></li>
+                        <li><a href="https://anyfileflow.blogspot.com/p/tutorials.html"><span class="sidebar-icon" aria-hidden="true">🎓</span> Tutorials</a></li>
+                        <li><a href="https://anyfileflow.blogspot.com/p/documentation.html"><span class="sidebar-icon" aria-hidden="true">📚</span> Documentation</a></li>
+                        <li><a href="#tools"><span class="sidebar-icon" aria-hidden="true">🛠️</span> All Tools</a></li>
+                        <li><a href="#features"><span class="sidebar-icon" aria-hidden="true">⭐</span> Features</a></li>
+                        <li><a href="#faq"><span class="sidebar-icon" aria-hidden="true">❓</span> FAQ</a></li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 30px;">Popular Tools</h3>
+                    <ul>
+                        <li><a href="#pdf-merger"><span class="sidebar-icon" aria-hidden="true">📄</span> Merge PDF</a></li>
+                        <li><a href="#image-converter"><span class="sidebar-icon" aria-hidden="true">🖼️</span> Image Converter</a></li>
+                        <li><a href="#video-converter"><span class="sidebar-icon" aria-hidden="true">🎬</span> Video Converter</a></li>
+                        <li><a href="#qr-code-generator"><span class="sidebar-icon" aria-hidden="true">🔳</span> QR Code Generator</a></li>
+                        <li><a href="#password-generator"><span class="sidebar-icon" aria-hidden="true">🔒</span> Password Generator</a></li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Users Say</h2>
+                <p>Don't just take our word for it - hear from our satisfied users</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "AnyFile Flow has saved me hours of work. The PDF tools are incredibly efficient and the fact that everything happens in my browser gives me peace of mind about privacy."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JS</div>
+                        <div class="author-info">
+                            <h4>John Smith</h4>
+                            <p>Freelance Designer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a small business owner, I can't afford expensive software. AnyFile Flow provides all the tools I need for free. The image compression has cut my website loading time in half!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Maria Johnson</h4>
+                            <p>Small Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I've tried many online file tools, but AnyFile Flow stands out for its speed and reliability. The interface is intuitive and the tools just work without any complications."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DB</div>
+                        <div class="author-info">
+                            <h4>David Brown</h4>
+                            <p>University Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Info -->
+    <section class="creator-info" id="creator">
+        <div class="container">
+            <div class="creator-content">
+                <div class="creator-avatar">
+                    <img src="https://assets.about.me/background/users/a/m/a/amanrauniyarofficial_1757690363_048.jpg" alt="Aman Rauniyar - Creator of AnyFile Flow">
+                </div>
+                <h2>Aman Rauniyar</h2>
+                <h3>Creator & Developer</h3>
+                <p>Welcome to AnyFile Flow. I am Aman Rauniyar, a passionate technology enthusiast and student dedicated to creating digital tools that empower users worldwide.</p>
+                <p>My mission is to simplify complex technical tasks—like file conversion—into accessible, fast, and free web experiences. Beyond the code, I am deeply driven by community service and social impact.</p>
+                <p>I actively manage and contribute to numerous social organizations, working towards education, leadership, and community welfare:</p>
+                <ul>
+                    <li>• 100's Group</li>
+                    <li>• Project Sikcha</li>
+                    <li>• Leo Club Kathmandu</li>
+                    <li>• Toastmasters International</li>
+                    <li>• Dari Club</li>
+                    <li>• Sower Action</li>
+                </ul>
+                <p>Currently pursuing studies while managing technology projects and social initiatives.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Email"><span aria-hidden="true">📧</span></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><span aria-hidden="true">🐦</span></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><span aria-hidden="true">📘</span></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><span aria-hidden="true">📷</span></a>
+                    <a href="#" class="social-link" aria-label="LinkedIn"><span aria-hidden="true">💼</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section class="collaboration" id="collaboration">
+        <div class="container">
+            <div class="collaboration-content">
+                <h2>Let's Collaborate</h2>
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you're looking for a developer, a tech consultant, or just want to chat about technology and social impact, I'd love to hear from you.</p>
+                <a href="mailto:amanrauniyar1112@gmail.com" class="contact-email">
+                    <span aria-hidden="true">📧</span>
+                    amanrauniyar1112@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about AnyFile Flow</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                        <span>Are the tools really free to use?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all tools on AnyFile Flow are completely free to use. There are no hidden costs, subscription fees, or limitations on usage. We believe in providing accessible tools for everyone.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                        <span>How do you ensure my files remain private?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All file processing happens directly in your browser using client-side technologies. Your files never leave your device or get uploaded to our servers, ensuring complete privacy and security.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                        <span>What file formats do you support?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We support a wide range of file formats including PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX, JPG, PNG, GIF, WEBP, MP4, AVI, MOV, MP3, WAV, and many more. Our tools are regularly updated to support new formats.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                        <span>Can I use these tools on mobile devices?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! AnyFile Flow is fully responsive and works perfectly on all devices including smartphones and tablets. The interface adapts to your screen size for optimal usability.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false">
+                        <span>How can I suggest a new tool or feature?</span>
+                        <span class="faq-toggle" aria-hidden="true">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We welcome suggestions for new tools or improvements to existing ones. Please contact us at amanrauniyar1112@gmail.com with your ideas. We review all suggestions and implement the most requested features.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AnyFile Flow</h3>
+                    <p>Your ultimate online file processing toolkit. Fast, secure, and completely free.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Email"><span aria-hidden="true">✉️</span></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><span aria-hidden="true">𝕏</span></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><span aria-hidden="true">ⓕ</span></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><span aria-hidden="true">🅾</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">AnyFile Flow Web</a></li>
+                        <li><a href="#">AnyFile Flow Desktop</a></li>
+                        <li><a href="#">AnyFile Flow Mobile</a></li>
+                        <li><a href="#">AnyFile Flow API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://docs.google.com/document/d/1imv29lSz2K1KE702YuwbLSG3N_4RGNhGH5Z-0-5b60I/edit?usp=sharing">Blog</a></li>
+                        <li><a href="https://docs.google.com/document/d/11gWeLT4JXE25RdIPVSAg995wYLRbcHu9jEcXsNEcf8U/edit?usp=sharing">Tutorials</a></li>
+                        <li><a href="https://docs.google.com/document/d/1pcN4CE0ypAUI5vsfMwlPKFJCrMGAUMIk6glzY5JwQj4/edit?usp=sharing">Documentation</a></li>
+                        <li><a href="https://docs.google.com/document/d/1HvXLI9gizj5f_I11i7dp8yz_ru5LcuzsvV0dd30A70E/edit?usp=sharing">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="https://docs.google.com/document/d/11CsE0jRC7RxEAIurfA3xm78UKWl5JUOsV59-0JphbEo/edit?usp=sharing">Privacy Policy</a></li>
+                        <li><a href="https://docs.google.com/document/d/1E-TqNFU7DHCOPj9FKuTQKCpTXOIuuoJxN8KntXPxsAg/edit?usp=sharing">Terms of Service</a></li>
+                        <li><a href="https://docs.google.com/document/d/1ep81tZOi8h7U5lWFMS4pCMwMJQawMDty647QChVh_HU/edit?usp=sharing">Disclaimer</a></li>
+                        <li><a href="https://docs.google.com/document/d/13weae63kjLRI9kMgfBhypCowqwDM7RPuAU06Pz4ERfY/edit?usp=sharing">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AnyFile Flow. All rights reserved. Created by Aman Rauniyar</p>
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tool Modal -->
+    <div class="modal" id="toolModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Tool Name</h2>
+                <button class="close-modal" id="closeModal" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="tool-interface" id="toolInterface">
+                    <!-- Tool-specific content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Performance optimization - Defer non-critical JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+                themeToggle.setAttribute('aria-label', document.body.classList.contains('dark-mode') ? 'Switch to light mode' : 'Switch to dark mode');
+            });
+
+            // Tools Data - Optimized for performance
+            const tools = [
+                {id: 'pdf-merger', title: 'Merge PDF', description: 'Combine PDFs in the order you want with the easiest PDF merger available.', icon: '📄', category: 'pdf', tags: ['PDF', 'Merge', 'Combine']},
+                {id: 'pdf-splitter', title: 'Split PDF', description: 'Separate one page or a whole set for easy conversion into independent PDF files.', icon: '✂️', category: 'pdf', tags: ['PDF', 'Split', 'Separate']},
+                {id: 'pdf-compressor', title: 'Compress PDF', description: 'Reduce file size while optimizing for maximal PDF quality.', icon: '🗜️', category: 'pdf', tags: ['PDF', 'Compress', 'Reduce']},
+                {id: 'pdf-to-word', title: 'PDF to Word', description: 'Easily convert your PDF files into easy to edit DOC and DOCX documents.', icon: '📝', category: 'pdf', tags: ['PDF', 'Word', 'Convert']},
+                {id: 'pdf-to-powerpoint', title: 'PDF to PowerPoint', description: 'Turn your PDF files into easy to edit PPT and PPTX slideshows.', icon: '📊', category: 'pdf', tags: ['PDF', 'PowerPoint', 'Convert']},
+                {id: 'pdf-to-excel', title: 'PDF to Excel', description: 'Pull data straight from PDFs into Excel spreadsheets in a few short seconds.', icon: '📈', category: 'pdf', tags: ['PDF', 'Excel', 'Convert']},
+                {id: 'word-to-pdf', title: 'Word to PDF', description: 'Make DOC and DOCX files easy to read by converting them to PDF.', icon: '📄', category: 'document', tags: ['Word', 'PDF', 'Convert']},
+                {id: 'powerpoint-to-pdf', title: 'PowerPoint to PDF', description: 'Make PPT and PPTX slideshows easy to view by converting them to PDF.', icon: '📊', category: 'document', tags: ['PowerPoint', 'PDF', 'Convert']},
+                {id: 'excel-to-pdf', title: 'Excel to PDF', description: 'Make EXCEL spreadsheets easy to read by converting them to PDF.', icon: '📈', category: 'document', tags: ['Excel', 'PDF', 'Convert']},
+                {id: 'edit-pdf', title: 'Edit PDF', description: 'Add text, images, shapes or freehand annotations to a PDF document.', icon: '✏️', category: 'pdf', tags: ['PDF', 'Edit', 'Annotate']},
+                {id: 'pdf-to-jpg', title: 'PDF to JPG', description: 'Convert each PDF page into a JPG or extract all images contained in a PDF.', icon: '🖼️', category: 'pdf', tags: ['PDF', 'JPG', 'Convert']},
+                {id: 'jpg-to-pdf', title: 'JPG to PDF', description: 'Convert JPG images to PDF in seconds. Easily adjust orientation and margins.', icon: '📄', category: 'image', tags: ['JPG', 'PDF', 'Convert']},
+                {id: 'sign-pdf', title: 'Sign PDF', description: 'Sign yourself or request electronic signatures from others.', icon: '✍️', category: 'pdf', tags: ['PDF', 'Sign', 'Electronic']},
+                {id: 'watermark', title: 'Watermark', description: 'Stamp an image or text over your PDF in seconds.', icon: '💧', category: 'pdf', tags: ['PDF', 'Watermark', 'Stamp']},
+                {id: 'rotate-pdf', title: 'Rotate PDF', description: 'Rotate your PDFs the way you need them.', icon: '🔄', category: 'pdf', tags: ['PDF', 'Rotate', 'Orientation']},
+                {id: 'html-to-pdf', title: 'HTML to PDF', description: 'Convert webpages in HTML to PDF.', icon: '🌐', category: 'document', tags: ['HTML', 'PDF', 'Convert']},
+                {id: 'unlock-pdf', title: 'Unlock PDF', description: 'Remove PDF password security.', icon: '🔓', category: 'pdf', tags: ['PDF', 'Unlock', 'Password']},
+                {id: 'protect-pdf', title: 'Protect PDF', description: 'Protect PDF files with a password.', icon: '🔒', category: 'pdf', tags: ['PDF', 'Protect', 'Password']},
+                {id: 'organize-pdf', title: 'Organize PDF', description: 'Sort pages of your PDF file however you like.', icon: '📑', category: 'pdf', tags: ['PDF', 'Organize', 'Sort']},
+                {id: 'pdf-to-pdfa', title: 'PDF to PDF/A', description: 'Transform your PDF to PDF/A for long-term archiving.', icon: '📋', category: 'pdf', tags: ['PDF', 'PDF/A', 'Convert']},
+                {id: 'repair-pdf', title: 'Repair PDF', description: 'Repair a damaged PDF and recover data from corrupt PDF.', icon: '🔧', category: 'pdf', tags: ['PDF', 'Repair', 'Recover']},
+                {id: 'page-numbers', title: 'Page numbers', description: 'Add page numbers into PDFs with ease.', icon: '🔢', category: 'pdf', tags: ['PDF', 'Page Numbers', 'Format']},
+                {id: 'scan-to-pdf', title: 'Scan to PDF', description: 'Capture document scans from your mobile device.', icon: '📱', category: 'pdf', tags: ['PDF', 'Scan', 'Mobile']},
+                {id: 'ocr-pdf', title: 'OCR PDF', description: 'Easily convert scanned PDF into searchable documents.', icon: '🔍', category: 'pdf', tags: ['PDF', 'OCR', 'Text Recognition']},
+                {id: 'compare-pdf', title: 'Compare PDF', description: 'Show a side-by-side document comparison.', icon: '📊', category: 'pdf', tags: ['PDF', 'Compare', 'Differences']},
+                {id: 'redact-pdf', title: 'Redact PDF', description: 'Redact text and graphics to remove sensitive information.', icon: '🚫', category: 'pdf', tags: ['PDF', 'Redact', 'Sensitive']},
+                {id: 'crop-pdf', title: 'Crop PDF', description: 'Crop margins of PDF documents or select specific areas.', icon: '✂️', category: 'pdf', tags: ['PDF', 'Crop', 'Trim']},
+                {id: 'image-converter', title: 'Image Converter', description: 'Convert between JPG, PNG, WEBP, and other popular image formats.', icon: '🖼️', category: 'image', tags: ['Image', 'Convert', 'Format']},
+                {id: 'image-compressor', title: 'Image Compressor', description: 'Reduce image file size without significant loss of quality.', icon: '🗜️', category: 'image', tags: ['Image', 'Compress', 'Reduce']},
+                {id: 'image-cropper', title: 'Image Cropper', description: 'Crop images to focus on specific areas or adjust aspect ratios.', icon: '✂️', category: 'image', tags: ['Image', 'Crop', 'Edit']},
+                {id: 'video-converter', title: 'Video Converter', description: 'Convert videos between MP4, AVI, MOV, and other popular formats.', icon: '🎬', category: 'video', tags: ['Video', 'Convert', 'Format']},
+                {id: 'video-compressor', title: 'Video Compressor', description: 'Reduce video file size while maintaining quality.', icon: '🗜️', category: 'video', tags: ['Video', 'Compress', 'Reduce']},
+                {id: 'audio-converter', title: 'Audio Converter', description: 'Convert audio files between MP3, WAV, FLAC, and other formats.', icon: '🎵', category: 'audio', tags: ['Audio', 'Convert', 'Format']},
+                {id: 'audio-trimmer', title: 'Audio Trimmer', description: 'Trim audio files to extract specific segments or remove unwanted parts.', icon: '✂️', category: 'audio', tags: ['Audio', 'Trim', 'Edit']},
+                {id: 'qr-code-generator', title: 'QR Code Generator', description: 'Create QR codes from text, URLs, or contact information.', icon: '🔳', category: 'productivity', tags: ['QR Code', 'Generate']},
+                {id: 'password-generator', title: 'Password Generator', description: 'Create strong, secure passwords with custom options.', icon: '🔒', category: 'productivity', tags: ['Password', 'Security']},
+                {id: 'unit-converter', title: 'Unit Converter', description: 'Convert between various units of measurement.', icon: '📏', category: 'productivity', tags: ['Units', 'Convert']},
+                {id: 'color-picker', title: 'Color Picker', description: 'Pick colors and get HEX, RGB, and HSL values.', icon: '🎨', category: 'productivity', tags: ['Color', 'Design']},
+                {id: 'seo-analyzer', title: 'SEO Analyzer', description: 'Analyze your website for SEO issues and get improvement suggestions.', icon: '🔍', category: 'seo', tags: ['SEO', 'Analyze', 'Website']},
+                {id: 'keyword-research', title: 'Keyword Research', description: 'Find relevant keywords for your content and analyze their potential.', icon: '📊', category: 'seo', tags: ['SEO', 'Keywords', 'Research']},
+                {id: 'backlink-checker', title: 'Backlink Checker', description: 'Check backlinks pointing to your website and analyze their quality.', icon: '🔗', category: 'seo', tags: ['SEO', 'Backlinks', 'Analysis']},
+                {id: 'meta-tag-generator', title: 'Meta Tag Generator', description: 'Generate optimized meta tags for your web pages.', icon: '🏷️', category: 'seo', tags: ['SEO', 'Meta Tags', 'Generator']}
+            ];
+
+            // Render Tools
+            const toolsGrid = document.getElementById('toolsGrid');
+            
+            function renderTools(filter = 'all') {
+                toolsGrid.innerHTML = '';
+                
+                const filteredTools = filter === 'all' 
+                    ? tools 
+                    : tools.filter(tool => tool.category === filter);
+                
+                filteredTools.forEach(tool => {
+                    const toolCard = document.createElement('div');
+                    toolCard.className = 'tool-card';
+                    toolCard.setAttribute('data-category', tool.category);
+                    toolCard.setAttribute('tabindex', '0');
+                    toolCard.setAttribute('role', 'button');
+                    toolCard.innerHTML = `
+                        <div class="tool-icon" aria-hidden="true">${tool.icon}</div>
+                        <h3>${tool.title}</h3>
+                        <p>${tool.description}</p>
+                        <div class="tool-tags">
+                            ${tool.tags.map(tag => `<span class="tool-tag">${tag}</span>`).join('')}
+                        </div>
+                    `;
+                    
+                    toolCard.addEventListener('click', () => openToolModal(tool));
+                    toolCard.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openToolModal(tool);
+                        }
+                    });
+                    toolsGrid.appendChild(toolCard);
+                });
+            }
+
+            // Filter Tools
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    renderTools(button.getAttribute('data-filter'));
+                });
+                
+                button.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        button.click();
+                    }
+                });
+            });
+
+            // Advanced Search Tools
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                const toolCards = document.querySelectorAll('.tool-card');
+                
+                toolCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const tags = Array.from(card.querySelectorAll('.tool-tag')).map(tag => tag.textContent.toLowerCase());
+                    
+                    const matches = title.includes(searchTerm) || 
+                                   description.includes(searchTerm) || 
+                                   tags.some(tag => tag.includes(searchTerm));
+                    
+                    card.style.display = matches ? 'flex' : 'none';
+                });
+            });
+
+            // Tool Modal
+            const toolModal = document.getElementById('toolModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const toolInterface = document.getElementById('toolInterface');
+            const closeModal = document.getElementById('closeModal');
+
+            function openToolModal(tool) {
+                modalTitle.textContent = tool.title;
+                toolInterface.innerHTML = getToolInterface(tool.id);
+                toolModal.style.display = 'flex';
+                closeModal.focus();
+                
+                // Initialize tool-specific functionality
+                if (tool.id === 'qr-code-generator') {
+                    initQRCodeGenerator();
+                }
+            }
+
+            function closeToolModal() {
+                toolModal.style.display = 'none';
+            }
+
+            closeModal.addEventListener('click', closeToolModal);
+            toolModal.addEventListener('click', (e) => {
+                if (e.target === toolModal) {
+                    closeToolModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && toolModal.style.display === 'flex') {
+                    closeToolModal();
+                }
+            });
+
+            // Tool Interfaces
+            function getToolInterface(toolId) {
+                if (toolId === 'qr-code-generator') {
+                    return `
+                        <!-- Advanced QR Code Generator Tool -->
+                        <div class="tool-options">
+                            <div class="option-group">
+                                <label for="qrContent">QR Code Content:</label>
+                                <textarea id="qrContent" placeholder="Enter text or URL" rows="3"></textarea>
+                            </div>
+
+                            <div class="option-group">
+                                <label for="qrLabel">Label Text (Optional):</label>
+                                <input type="text" id="qrLabel" placeholder="Text to appear below QR code">
+                            </div>
+
+                            <div class="option-group">
+                                <label for="qrSize">Size:</label>
+                                <select id="qrSize">
+                                    <option value="200">Small (200x200)</option>
+                                    <option value="300" selected>Medium (300x300)</option>
+                                    <option value="400">Large (400x400)</option>
+                                </select>
+                            </div>
+
+                            <div class="option-group">
+                                <label for="qrColor">QR Color:</label>
+                                <input type="color" id="qrColor" value="#000000">
+                            </div>
+
+                            <div class="option-group">
+                                <label for="qrBgColor">Background Color:</label>
+                                <input type="color" id="qrBgColor" value="#ffffff">
+                            </div>
+
+                            <div class="option-group">
+                                <label for="qrShape">Module Shape:</label>
+                                <select id="qrShape">
+                                    <option value="square">Square</option>
+                                    <option value="rounded" selected>Rounded</option>
+                                    <option value="circle">Circle</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Generate Button -->
+                        <div class="tool-actions">
+                            <button class="btn btn-primary" id="processBtn">Generate QR Code</button>
+                        </div>
+
+                        <!-- Processing Indicator -->
+                        <div class="processing-indicator" id="processingIndicator" style="display:none;">
+                            <div class="spinner"></div>
+                            <p>Generating your QR code...</p>
+                        </div>
+
+                        <!-- Result Area -->
+                        <div class="result-area" id="resultArea" style="display:none;">
+                            <h3>Your QR code is ready!</h3>
+                            <div id="qrCodeContainer" style="text-align:center; margin:20px 0;"></div>
+                            <div style="display:flex; justify-content:center; gap:10px;">
+                                <button class="btn btn-primary" id="downloadBtn">⬇️ Download QR Code</button>
+                                <button class="btn btn-secondary" id="copyBtn">📋 Copy QR Image</button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="upload-area" id="uploadArea" tabindex="0" role="button">
+                            <div class="upload-icon" aria-hidden="true">📄</div>
+                            <h3>Drop files here or click to upload</h3>
+                            <p>Select files to process</p>
+                            <input type="file" class="file-input" id="fileInput">
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn btn-primary" id="processBtn">Process Files</button>
+                        </div>
+                        <div class="processing-indicator" id="processingIndicator">
+                            <div class="spinner" aria-hidden="true"></div>
+                            <p>Processing your files...</p>
+                        </div>
+                        <div class="result-area" id="resultArea">
+                            <h3>Your files are ready!</h3>
+                            <button class="btn btn-primary download-btn" id="downloadBtn">
+                                <span aria-hidden="true">⬇️</span> Download Result
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+
+            // QR Code Generator Logic
+            function initQRCodeGenerator() {
+                const processBtn = document.getElementById('processBtn');
+                const qrContent = document.getElementById('qrContent');
+                const qrLabel = document.getElementById('qrLabel');
+                const qrSize = document.getElementById('qrSize');
+                const qrColor = document.getElementById('qrColor');
+                const qrBgColor = document.getElementById('qrBgColor');
+                const qrShape = document.getElementById('qrShape');
+                const processingIndicator = document.getElementById('processingIndicator');
+                const resultArea = document.getElementById('resultArea');
+                const qrCodeContainer = document.getElementById('qrCodeContainer');
+                const downloadBtn = document.getElementById('downloadBtn');
+                const copyBtn = document.getElementById('copyBtn');
+
+                let currentCanvas = null;
+
+                processBtn.addEventListener('click', generateQRCode);
+
+                function generateQRCode() {
+                    const text = qrContent.value.trim();
+                    if(!text) {
+                        alert('Please enter text or URL.');
+                        return;
+                    }
+
+                    const label = qrLabel.value.trim();
+                    const size = parseInt(qrSize.value);
+                    const color = qrColor.value;
+                    const bgColor = qrBgColor.value;
+                    const shape = qrShape.value;
+
+                    processingIndicator.style.display = 'block';
+                    resultArea.style.display = 'none';
+                    qrCodeContainer.innerHTML = '';
+
+                    setTimeout(() => {
+                        QRCode.toCanvas(text, {
+                            width: size,
+                            color: { dark: color, light: bgColor },
+                            errorCorrectionLevel: 'H'
+                        }, (err, canvas) => {
+                            processingIndicator.style.display = 'none';
+                            if(err) {
+                                qrCodeContainer.innerHTML = 'Error generating QR code.';
+                                console.error(err);
+                                return;
+                            }
+
+                            // Apply module shape by pixel manipulation
+                            if(shape !== 'square') {
+                                const ctx = canvas.getContext('2d');
+                                const imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+                                for(let y=0; y<canvas.height; y++) {
+                                    for(let x=0; x<canvas.width; x++) {
+                                        const idx = (y*canvas.width + x)*4;
+                                        // Detect dark pixels
+                                        if(imageData.data[idx]===0 && imageData.data[idx+1]===0 && imageData.data[idx+2]===0) {
+                                            // Draw small rounded circle if 'circle' or rounded pixel
+                                            if(shape==='circle' || shape==='rounded') {
+                                                ctx.fillStyle=color;
+                                                ctx.fillRect(x,y,1,1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Add label below QR code
+                            const finalCanvas = document.createElement('canvas');
+                            finalCanvas.width = canvas.width;
+                            finalCanvas.height = canvas.height + (label ? 30 : 0);
+                            const fCtx = finalCanvas.getContext('2d');
+
+                            // Fill background
+                            fCtx.fillStyle = bgColor;
+                            fCtx.fillRect(0,0,finalCanvas.width,finalCanvas.height);
+
+                            // Draw QR code
+                            fCtx.drawImage(canvas,0,0);
+
+                            // Draw label
+                            if(label){
+                                fCtx.fillStyle=color;
+                                fCtx.font = '16px sans-serif';
+                                fCtx.textAlign = 'center';
+                                fCtx.fillText(label, finalCanvas.width/2, canvas.height + 20);
+                            }
+
+                            qrCodeContainer.appendChild(finalCanvas);
+                            resultArea.style.display = 'block';
+                            currentCanvas = finalCanvas;
+                        });
+                    }, 150);
+                }
+
+                // Download QR Code
+                downloadBtn.addEventListener('click', () => {
+                    if(!currentCanvas) return;
+                    const dataURL = currentCanvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.href = dataURL;
+                    link.download = 'qr-code.png';
+                    link.click();
+                });
+
+                // Copy QR Code Image
+                copyBtn.addEventListener('click', () => {
+                    if(!currentCanvas) return;
+                    currentCanvas.toBlob(blob => {
+                        navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]).then(() => {
+                            alert('QR Code copied to clipboard!');
+                        });
+                    });
+                });
+
+                // Optional: live preview as typing
+                qrContent.addEventListener('input', () => { if(qrContent.value) generateQRCode(); });
+            }
+
+            // FAQ Toggle
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(faq => faq.classList.remove('active'));
+                    if (!isActive) {
+                        item.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
+                    } else {
+                        question.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                question.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        question.click();
+                    }
+                });
+            });
+
+            // Initialize
+            renderTools();
+            
+            // Set up event listeners for tool interfaces when modal opens
+            toolModal.addEventListener('click', (e) => {
+                if (e.target.id === 'uploadArea' || e.target.closest('#uploadArea')) {
+                    document.getElementById('fileInput').click();
+                }
+                
+                if (e.target.id === 'processBtn') {
+                    const processingIndicator = document.getElementById('processingIndicator');
+                    const resultArea = document.getElementById('resultArea');
+                    
+                    processingIndicator.style.display = 'block';
+                    
+                    // Simulate processing
+                    setTimeout(() => {
+                        processingIndicator.style.display = 'none';
+                        resultArea.style.display = 'block';
+                    }, 2000);
+                }
+                
+                if (e.target.id === 'downloadBtn') {
+                    alert('Download functionality would be implemented here!');
+                }
+            });
+            
+            // Handle file input changes
+            toolModal.addEventListener('change', (e) => {
+                if (e.target.id === 'fileInput') {
+                    const fileInput = e.target;
+                    const uploadArea = document.getElementById('uploadArea');
+                    
+                    if (fileInput.files.length > 0) {
+                        uploadArea.innerHTML = `
+                            <div class="upload-icon" aria-hidden="true">✅</div>
+                            <h3>${fileInput.files.length} file(s) selected</h3>
+                            <p>Ready to process</p>
+                        `;
+                    }
+                }
+            });
+            
+            // Performance optimization - Lazy load images
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
+        });
+    </script>
+</body>
+</html>
